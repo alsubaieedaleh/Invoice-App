@@ -137,7 +137,6 @@ C:\Users\SV\Desktop\Invoice Project\invoiceApp\obj\Debug\net10.0\rjsmcshtml.dswa
 C:\Users\SV\Desktop\Invoice Project\invoiceApp\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\SV\Desktop\Invoice Project\invoiceApp\obj\Debug\net10.0\scopedcss\bundle\invoiceApp.styles.css
 C:\Users\SV\Desktop\Invoice Project\invoiceApp\obj\Debug\net10.0\scopedcss\projectbundle\invoiceApp.bundle.scp.css
-C:\Users\SV\Desktop\Invoice Project\invoiceApp\obj\Debug\net10.0\compressed\zdxjnlm5ll-{0}-b9sayid5wm-b9sayid5wm.gz
 C:\Users\SV\Desktop\Invoice Project\invoiceApp\obj\Debug\net10.0\compressed\g5wsg2vbz2-{0}-61n19gt1b8-61n19gt1b8.gz
 C:\Users\SV\Desktop\Invoice Project\invoiceApp\obj\Debug\net10.0\compressed\fnrzdlg2h2-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 C:\Users\SV\Desktop\Invoice Project\invoiceApp\obj\Debug\net10.0\compressed\dwwe3aruj7-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -212,3 +211,5 @@ C:\Users\SV\Desktop\Invoice Project\invoiceApp\obj\Debug\net10.0\refint\invoiceA
 C:\Users\SV\Desktop\Invoice Project\invoiceApp\obj\Debug\net10.0\invoiceApp.pdb
 C:\Users\SV\Desktop\Invoice Project\invoiceApp\obj\Debug\net10.0\invoiceApp.genruntimeconfig.cache
 C:\Users\SV\Desktop\Invoice Project\invoiceApp\obj\Debug\net10.0\ref\invoiceApp.dll
+C:\Users\SV\Desktop\Invoice Project\invoiceApp\obj\Debug\net10.0\invoiceApp.sourcelink.json
+C:\Users\SV\Desktop\Invoice Project\invoiceApp\obj\Debug\net10.0\compressed\zdxjnlm5ll-{0}-sjzcmr1w1s-sjzcmr1w1s.gz

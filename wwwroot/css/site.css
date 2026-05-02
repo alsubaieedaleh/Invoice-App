@@ -29,3 +29,39 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+/* ===== Invoice Print Styles ===== */
+@media print {
+    .no-print { display: none !important; }
+    header { display: none !important; }
+    footer { display: none !important; }
+    .invoice-box { border: none !important; box-shadow: none !important; margin: 0; padding: 20px; }
+}
+
+/* ===== Invoice Layout ===== */
+.invoice-box {
+    max-width: 800px;
+    margin: auto;
+    padding: 40px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    background: #fff;
+}
+
+.invoice-title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #212529;
+}
+
+.bill-to-section {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.total-row {
+    background: #212529;
+    color: #fff;
+}
