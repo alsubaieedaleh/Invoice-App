@@ -22,8 +22,13 @@ public class CustomerController : Controller {
     {
         return View();
     }
-    [HttpPost]
+       [HttpPost]
     public IActionResult Create(Customer customer){
+         var exists = _context.Customers.Any(c => c.Phone == customer.Phone);
+        if (exists){
+            ModelState.AddModelError("Phone", "A customer with this phone number already exists!");
+        }
+
         if (ModelState.IsValid){
             _context.Customers.Add(customer);
             _context.SaveChanges();
@@ -32,6 +37,7 @@ public class CustomerController : Controller {
         }
         return View(customer);
     }
+
     public IActionResult Edit(int id){
         var customer = _context.Customers.Find(id);
         if (customer == null){
@@ -39,16 +45,22 @@ public class CustomerController : Controller {
         }
         return View(customer);
     }
-    [HttpPost]
+        [HttpPost]
     public IActionResult Edit(Customer customer){
+        var exists = _context.Customers.Any(c => c.Phone == customer.Phone && c.Id != customer.Id);
+        if (exists){
+            ModelState.AddModelError("Phone", "A customer with this phone number already exists!");
+        }
+
         if (ModelState.IsValid){
             _context.Customers.Update(customer);
             _context.SaveChanges();
-             TempData["Success"] = "Customer updated successfully!"; 
+            TempData["Success"] = "Customer updated successfully!";
             return RedirectToAction("Index");
         }
         return View(customer);
     }
+
       public IActionResult Delete(int id)
         {
             var customer = _context.Customers.Find(id);

@@ -8,8 +8,7 @@
             </div>
             <div class="card-body">
                 <form asp-action="Edit" method="post">
-                    <div asp-validation-summary="All" class="text-danger"></div>
-                    <input type="hidden" asp-for="Id" />
+                     <input type="hidden" asp-for="Id" />
 
                     <div class="form-group mb-3">
                         <label asp-for="Name" class="form-label fw-bold"></label>
@@ -43,6 +42,4 @@
     </div>
 </div>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+ 
