@@ -20,7 +20,7 @@
                     </tr>
                     <tr>
                         <td class="fw-bold">Date:</td>
-                        <td>@Model.Date.ToShortDateString()</td>
+                        <td>@Model.Date.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)</td>
                     </tr>
                     <tr>
                         <td class="fw-bold">Total:</td>

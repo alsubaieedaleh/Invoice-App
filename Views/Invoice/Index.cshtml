@@ -33,7 +33,7 @@ else
                         <tr>
                             <td><strong>#@invoice.Id</strong></td>
                             <td>@invoice.Customer?.Name</td>
-                            <td>@invoice.Date.ToShortDateString()</td>
+                            <td>@invoice.Date.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)</td>
                             <td><span class="badge bg-black fs-6">@invoice.Total.ToString("C")</span></td>
                             <td class="text-end">
                                 <a asp-action="Details" asp-route-id="@invoice.Id" class="btn btn-sm btn-outline-info">

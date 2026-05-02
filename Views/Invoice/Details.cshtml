@@ -17,12 +17,12 @@
         <div class="text-end">
             <table class="table table-borderless table-sm mb-0" style="width: auto;">
                 <tr>
-                    <td class="fw-bold text-end pe-3">Invoice #:</td>
-                    <td>@Model.Id</td>
+                    <td class="fw-bold text-end pe-2">Invoice #:</td>
+                    <td class="text-start">@Model.Id</td>
                 </tr>
                 <tr>
-                    <td class="fw-bold text-end pe-3">Date:</td>
-                    <td>@Model.Date.ToString("MMMM dd, yyyy", CultureInfo.InvariantCulture)</td>
+                    <td class="fw-bold text-end pe-2">Date:</td>
+                    <td class="text-start">@Model.Date.ToString("MMMM dd, yyyy", CultureInfo.InvariantCulture)</td>
                 </tr>
             </table>
         </div>
