@@ -10,4 +10,3 @@ namespace invoiceApp.Data{
         public DbSet<InvoiceItem> InvoiceItems { get; set;}
     }
 }
-
