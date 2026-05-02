@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using invoiceApp.Data;
 using invoiceApp.Models;
+namespace invoiceApp.Controllers;
+
 public class CustomerController : Controller {
 
     private readonly InvoiceDbContext _context;

@@ -9,11 +9,16 @@ builder.Services.AddDbContext<InvoiceDbContext>(options => {
 });
 var app = builder.Build();
 
-
+var cultureInfo = new CultureInfo("ar-SA");
+cultureInfo.NumberFormat.CurrencySymbol = "\u20C1";
+cultureInfo.NumberFormat.CurrencyDecimalDigits = 2;
+cultureInfo.DateTimeFormat.Calendar = new GregorianCalendar();
+cultureInfo.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy";
+CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-   
+    
     app.UseHsts();
 }
 
@@ -28,13 +33,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Customer}/{action=Index}/{id?}")
     .WithStaticAssets();
-var cultureInfo = new CultureInfo("ar-SA");
-cultureInfo.NumberFormat.CurrencySymbol = "\u20C1";
-cultureInfo.NumberFormat.CurrencyDecimalDigits = 2;
-cultureInfo.DateTimeFormat.Calendar = new GregorianCalendar();
-cultureInfo.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy";
-CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
-CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
 
 
 app.Run();
