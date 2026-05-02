@@ -1,0 +1,82 @@
+@model invoiceApp.Models.Invoice
+
+<style>
+    @@media print {
+        .no-print { display: none !important; }
+        header { display: none !important; }
+        footer { display: none !important; }
+        .invoice-box { border: none !important; box-shadow: none !important; }
+    }
+    .invoice-box {
+        max-width: 800px;
+        margin: auto;
+        padding: 40px;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        background: #fff;
+    }
+</style>
+
+<div class="no-print d-flex justify-content-center gap-2 mb-4">
+    <button onclick="window.print()" class="btn btn-primary">
+        <i class="bi bi-printer me-1"></i>Print Invoice
+    </button>
+    <a asp-action="Index" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left me-1"></i>Back to List
+    </a>
+</div>
+
+<div class="invoice-box">
+    <div class="d-flex justify-content-between align-items-start mb-4">
+        <div>
+            <h2 class="fw-bold mb-0">INVOICE</h2>
+            <span class="text-muted fs-5">#@Model.Id</span>
+        </div>
+        <div class="text-end">
+            <p class="mb-0"><strong>Date:</strong></p>
+            <p class="text-muted">@Model.Date.ToShortDateString()</p>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <h5 class="text-muted mb-3">Bill To:</h5>
+            <h4 class="fw-bold">@Model.Customer?.Name</h4>
+            <p class="mb-1"><i class="bi bi-geo-alt me-1"></i>@Model.Customer?.Address</p>
+            <p class="mb-0"><i class="bi bi-telephone me-1"></i>@Model.Customer?.Phone</p>
+        </div>
+    </div>
+
+    <table class="table table-bordered mt-4">
+        <thead class="table-dark">
+            <tr>
+                <th style="width:60px">#</th>
+                <th>Item</th>
+                <th>Description</th>
+                <th class="text-end" style="width:130px">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ int itemNumber = 1; }
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@itemNumber</td>
+                    <td><strong>@item.ItemName</strong></td>
+                    <td>@item.Description</td>
+                    <td class="text-end">@((item.Price * item.Amount).ToString("C"))</td>
+                </tr>
+                itemNumber++;
+            }
+        </tbody>
+        <tfoot>
+            <tr class="table-dark">
+                <td colspan="3" class="text-end fw-bold fs-5">Total</td>
+                <td class="text-end fw-bold fs-5">@Model.Total.ToString("C")</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

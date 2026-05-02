@@ -1,0 +1,11 @@
+namespace invoiceApp.Models;
+
+public class Invoice {
+
+    public int Id { get; set;}
+    public int CustomerId { get; set;}
+    public Customer Customer { get; set; }
+    public DateTime Date { get; set;}
+    public List<InvoiceItem> Items { get; set;}
+    public decimal Total { get; set;}
+}

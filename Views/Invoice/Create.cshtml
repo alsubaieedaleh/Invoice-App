@@ -1,0 +1,88 @@
+@model invoiceApp.Models.Invoice
+@{
+    var customers = ViewBag.Customers as List<invoiceApp.Models.Customer>;
+}
+
+<div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0"><i class="bi bi-file-earmark-plus me-2"></i>Create New Invoice</h4>
+    </div>
+    <div class="card-body">
+        <form asp-action="Create" method="post">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Select Customer</label>
+                    <select name="CustomerId" class="form-select" required>
+                        <option value="">-- Choose a Customer --</option>
+                        @foreach (var c in customers)
+                        {
+                            <option value="@c.Id">@c.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <h5 class="mb-3"><i class="bi bi-list-ul me-2"></i>Invoice Items</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="itemsTable">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Description</th>
+                            <th style="width:150px">Price</th>
+                            <th style="width:100px">Amount</th>
+                            <th style="width:60px"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemsBody">
+                        <tr>
+                            <td><input type="text" name="Items[0].ItemName" class="form-control" required /></td>
+                            <td><input type="text" name="Items[0].Description" class="form-control" /></td>
+                            <td><input type="number" name="Items[0].Price" class="form-control" step="0.01" required /></td>
+                            <td><input type="number" name="Items[0].Amount" class="form-control" value="1" required /></td>
+                            <td><button type="button" class="btn btn-outline-danger btn-sm" onclick="removeRow(this)"><i class="bi bi-x-lg"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button type="button" class="btn btn-outline-secondary mb-4" onclick="addRow()">
+                <i class="bi bi-plus-circle me-1"></i>Add Item
+            </button>
+
+            <hr />
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success">
+                    <i class="bi bi-check-lg me-1"></i>Save Invoice
+                </button>
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left me-1"></i>Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var rowIndex = 1;
+
+        function addRow() {
+            var tbody = document.getElementById("itemsBody");
+            var row = document.createElement("tr");
+            row.innerHTML =
+                '<td><input type="text" name="Items[' + rowIndex + '].ItemName" class="form-control" required /></td>' +
+                '<td><input type="text" name="Items[' + rowIndex + '].Description" class="form-control" /></td>' +
+                '<td><input type="number" name="Items[' + rowIndex + '].Price" class="form-control" step="0.01" required /></td>' +
+                '<td><input type="number" name="Items[' + rowIndex + '].Amount" class="form-control" value="1" required /></td>' +
+                '<td><button type="button" class="btn btn-outline-danger btn-sm" onclick="removeRow(this)"><i class="bi bi-x-lg"></i></button></td>';
+            tbody.appendChild(row);
+            rowIndex++;
+        }
+
+        function removeRow(btn) {
+            var row = btn.closest("tr");
+            row.remove();
+        }
+    </script>
+}
